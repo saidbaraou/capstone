@@ -34,9 +34,33 @@ Zentry stands out by its architecture and its feature set, fulfilling the requir
 
 ## Installation and Setup
 
+### ⚠️ Mandatory Configuration
+Before running the backend, you **must** create a `.env` file in the `backend/` directory.
+
+1. Create the file: `touch backend/.env`
+2. Add the following required variables:
+   ```env
+   DEBUG=True
+   SECRET_KEY=your_random_secret_key_here
+   ALLOWED_HOSTS=localhost,127.0.0.1
+   DATABASE_URL=sqlite:///db.sqlite3
+
+   Note: You can generate a new secret key using the command:
+python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+
 ### Backend
 1. Navigate to the `backend` folder.
 2. Create and activate a virtual environment:
    ```bash
    python -m venv venv
    source venv/Scripts/activate # On Windows
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+4. Create a .env file based on the provided examples and run migrations:
+   ```bash
+   python manage.py migrate
+4. Start the server:
+   ```bash
+   python manage.py runserver
+   
