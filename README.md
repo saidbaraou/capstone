@@ -63,4 +63,14 @@ Before running the backend, you **must** create a `.env` file in the `backend/` 
 4. Start the server:
    ```bash
    python manage.py runserver
+
+   
+### Frontend
+1. Navigate to the `front` folder.
+2. Install dependencies:
+   ```bash
+   npm install
+3. Run environment server:
+   ```bash
+   npm run dev
    
