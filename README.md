@@ -46,7 +46,7 @@ Before running the backend, you **must** create a `.env` file in the `backend/` 
    DATABASE_URL=sqlite:///db.sqlite3
 
    Note: You can generate a new secret key using the command:
-python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+    python -c 'from django.core.management.utils import get_random_secret_key;     print(get_random_secret_key())'
 
 ### Backend
 1. Navigate to the `backend` folder.
