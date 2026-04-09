@@ -70,6 +70,9 @@ Before running the backend, you **must** create a `.env` file in the `backend/` 
 2. Install dependencies:
    ```bash
    npm install
+
+## Additional information
+This project was developed as the final Capstone project for Harvard University's CS50W - Web Programming with Python and JavaScript.
 3. Run environment server:
    ```bash
    npm run dev
