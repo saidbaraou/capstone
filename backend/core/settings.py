@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'visitors',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
