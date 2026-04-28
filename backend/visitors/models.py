@@ -1,6 +1,6 @@
 from django.db import models
 
-# Case 1: Success (complete and correct model definition)
+
 class Visitor(models.Model):
   first_name = models.CharField(max_length=50)
   last_name = models.CharField(max_length=50)
