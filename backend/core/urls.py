@@ -21,7 +21,7 @@ from rest_framework.routers import DefaultRouter
 from visitors.views import VisitorViewSet
 
 router = DefaultRouter()
-router.register(r'visitors', VisitorViewSet)  # This will create routes for the VisitorViewSet
+router.register(r'visitors', VisitorViewSet, basename='visitor')  # This will create routes for the VisitorViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
