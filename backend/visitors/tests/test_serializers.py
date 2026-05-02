@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .serializers import VisitorSerializer
+from visitors.serializers import VisitorSerializer
 
 
 # Case 1: Success (valid data)
@@ -11,7 +11,7 @@ class VisitorSerializerTestCase(TestCase):
             "email": "johndoe@example.com",
             "company": "Example Inc.",
         }
-        serializer = VisitorSerializer(data=payload)
+        serializer = VisitorSerializer(data=data)
         self.assertTrue(serializer.is_valid())
         self.assertEqual(serializer.validated_data['first_name'], "John")
 

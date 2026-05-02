@@ -1,7 +1,7 @@
-from rest_framwork.test import APITestCase
+from rest_framework.test import APITestCase
 from django.urls import reverse
 from rest_framework import status
-from .models import Visitor
+from visitors.models import Visitor
 
 
 class VisitorAPITest(APITestCase):
