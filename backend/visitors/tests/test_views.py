@@ -5,8 +5,8 @@ from .models import Visitor
 
 
 class VisitorAPITest(APITestCase):
-  
-  def test_get_projects_list(self):
+
+  def test_get_visitors_list(self):
 
     url = reverse('visitor-list')
 
@@ -15,3 +15,12 @@ class VisitorAPITest(APITestCase):
     self.assertEqual(response.status_code, status.HTTP_200_OK)
     
     self.assertIsInstance(response.data, list)
+
+    def test_get_visitor(self):
+        url = reverse('visitor-list')
+
+        Visitor.objects.create(
+           first_name="John",
+            last_name="Doe",
+            email="johndoe@example.com"
+        )
