@@ -26,5 +26,8 @@ jobs:
 
       - name: Run tests
         working-directory: ./backend
+        env: 
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DEBUG: 'False'
         run: |
           python manage.py test
