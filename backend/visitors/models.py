@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 
 class Visitor(models.Model):
   first_name = models.CharField(max_length=50)
@@ -58,5 +59,19 @@ class Visit(models.Model):
 
     class Meta:
         ordering = ['-planned_arrival']
+
+    #Business Logic Methods
+
+    def mark_as_arrived(self):
+        """Sets check-in time and updates status to CHECKED_IN"""
+        self.check_in_time = timezone.now()
+        self.status = self.VisitStatus.CHECKED_IN
+        self.save()
+
+    def mark_as_departed(self):
+        """Sets check-out time and updates status to CHECKED_OUT"""
+        self.check_out_time = timezone.now()
+        self.status = self.VisitStatus.CHECKED_OUT
+        self.save()
 
     
