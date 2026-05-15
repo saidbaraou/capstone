@@ -15,7 +15,7 @@ class Visitor(models.Model):
   
 
 class Visit(models.Model):
-    class VisitorStatus(models.TextChoices):
+    class VisitStatus(models.TextChoices):
         PENDING = 'PENDING', 'Pending'
         CHECKED_IN = 'CHECKED_IN', 'Checked In'
         CHECKED_OUT = 'CHECKED_OUT', 'Checked Out'
@@ -44,8 +44,8 @@ class Visit(models.Model):
     # Business Logic
     status = models.CharField(
         max_length=20, 
-        choices=VisitorStatus.choices, 
-        default=VisitorStatus.PENDING
+        choices=VisitStatus.choices, 
+        default=VisitStatus.PENDING
     )
     purpose_of_visit = models.TextField(blank=True)
     
