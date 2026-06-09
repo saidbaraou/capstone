@@ -10,7 +10,7 @@ class VisitSerializer(serializers.ModelSerializer):
     # display host's full name instead of just the ID
     host_name = serializers.ReadOnlyField(source='host.get_full_name')
     # Optionally include visitor's email in the serialized output
-    visitor_email = serializers.Readonlyfield(source='host.email')
+    visitor_email = serializers.ReadOnlyField(source='host.email')
 
     class Meta:
         model = Visit
