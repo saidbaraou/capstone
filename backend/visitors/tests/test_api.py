@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from .models import Visit
+from visitors.models import Visit
 
 User = get_user_model()
 
