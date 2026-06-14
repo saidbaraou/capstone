@@ -34,7 +34,7 @@ const VisitsDashboard: React.FC = () => {
       const response = await axios.get<Visit[]>(API_BASE_URL);
       setVisits(response.data);
       setLoading(false);
-    } catch (err) {
+    } catch (err: any) {
       setError("Could not fetch visits from the server.");
       setLoading(false);
     } finally {
@@ -46,13 +46,15 @@ const VisitsDashboard: React.FC = () => {
     fetchVisits();
   }, []);
 
-  const handleCheckIn = async (visitId) => {
+  const handleCheckIn = async (visitId: string): Promise<void> => {
     try {
 
       const response = await axios.post(`${API_BASE_URL}${visitId}/check-in/`);
 
-      setVisits(visits.map(v => v.id === visitId ? response.data : v));
-    } catch (err) {
+      setVisits(prevVisits => 
+        prevVisits.map(v => v.id === visitId ? response.data : v)
+      );
+    } catch (err: any) {
       alert("Error during check-in: " + (err.response?.data?.detail || "Unknown error"));
     }
   };
@@ -63,7 +65,7 @@ const VisitsDashboard: React.FC = () => {
   return (
     <div style={{ padding: '20px' }}>
       <h2>Visitor Management Dashboard</h2>
-      <table border="1" cellPadding="10" style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <table border={1} cellPadding={10} style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ backgroundColor: '#f4f4f4' }}>
             <th>Visitor Name</th>
