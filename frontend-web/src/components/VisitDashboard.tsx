@@ -27,22 +27,19 @@ const VisitsDashboard: React.FC = () => {
   // Define the API base URL using the environment variable
   const API_BASE_URL = import.meta.env.VITE_API_URL + 'visits/';
 
-  // Function to fetch visits from the API
-  const fetchVisits = async (): Promise<void> => {
-    try {
-      setLoading(true);
-      const response = await axios.get<Visit[]>(API_BASE_URL);
-      setVisits(response.data);
-      setLoading(false);
-    } catch (err: any) {
-      setError("Could not fetch visits from the server.");
-      setLoading(false);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
+    const fetchVisits = async (): Promise<void> => {
+      try {
+        const response = await axios.get<Visit[]>(API_BASE_URL);
+        setVisits(response.data); 
+      } catch (err) {
+        setError(err + "Failed to fetch visits. Please try again later.");
+      }finally {
+        setLoading(false);
+      }
+    }
+
     fetchVisits();
   }, []);
 
