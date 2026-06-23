@@ -1,4 +1,3 @@
-import React from 'react';
 import VisitsDashboard from './components/VisitDashboard.tsx'
 
 function App() {
