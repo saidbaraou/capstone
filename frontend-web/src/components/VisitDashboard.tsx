@@ -33,8 +33,9 @@ const VisitsDashboard: React.FC = () => {
       try {
         const response = await axios.get<Visit[]>(API_BASE_URL);
         setVisits(response.data); 
-      } catch (err) {
-        setError(err + "Failed to fetch visits. Please try again later.");
+      } catch (err: any) {
+        const errorMessage = err.response?.data?.detail || err.message || "Failed to fetch visits.";
+  setError(`${errorMessage} Please try again later.`);
       }finally {
         setLoading(false);
       }
