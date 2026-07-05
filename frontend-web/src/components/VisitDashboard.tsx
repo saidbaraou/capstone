@@ -107,4 +107,16 @@ const VisitsDashboard: React.FC = () => {
   );
 };
 
+const handleCheckOut = async (visitId: string): Promise<void> => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}${visitId}/check-out/`);
+    setVisits(prevVisits => 
+      prevVisits.map(v => v.id === visitId ? response.data : v)
+    );
+  } catch (err: any) {
+    alert("Error during check-out: " + (err.response?.data?.detail || "Unknown error"));
+  }   
+};
+
+
 export default VisitsDashboard;
