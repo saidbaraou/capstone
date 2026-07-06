@@ -57,6 +57,17 @@ const VisitsDashboard: React.FC = () => {
     }
   };
 
+  const handleCheckOut = async (visitId: string): Promise<void> => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}${visitId}/check-out/`);
+    setVisits(prevVisits => 
+      prevVisits.map(v => v.id === visitId ? response.data : v)
+    );
+  } catch (err: any) {
+    alert("Error during check-out: " + (err.response?.data?.detail || "Unknown error"));
+  }   
+};
+
   if (loading) return <p>Loading visitors...</p>;
   if (error) return <p style={{ color: 'red' }}>{error}</p>;
 
@@ -98,6 +109,11 @@ const VisitsDashboard: React.FC = () => {
                   </button>
                 )}
                 {visit.status === 'CHECKED_IN' && <span>On site</span>}
+                <button onClick={() => handleCheckOut(visit.id)}
+                style={{ color: 'red', cursor: 'pointer' }}>
+                    Check Out
+                  </button>
+                {visit.status === 'CHECKED_OUT' && <span style={{ color: '#6c757d' }}>Left</span>}
               </td>
             </tr>
           ))}
@@ -107,16 +123,7 @@ const VisitsDashboard: React.FC = () => {
   );
 };
 
-const handleCheckOut = async (visitId: string): Promise<void> => {
-  try {
-    const response = await axios.post(`${API_BASE_URL}${visitId}/check-out/`);
-    setVisits(prevVisits => 
-      prevVisits.map(v => v.id === visitId ? response.data : v)
-    );
-  } catch (err: any) {
-    alert("Error during check-out: " + (err.response?.data?.detail || "Unknown error"));
-  }   
-};
+
 
 
 export default VisitsDashboard;
