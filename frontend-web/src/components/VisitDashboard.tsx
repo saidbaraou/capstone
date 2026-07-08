@@ -33,16 +33,20 @@ const VisitsDashboard: React.FC = () => {
       try {
         const response = await axios.get<Visit[]>(API_BASE_URL);
         setVisits(response.data); 
-      } catch (err: any) {
-        const errorMessage = err.response?.data?.detail || err.message || "Failed to fetch visits.";
-  setError(`${errorMessage} Please try again later.`);
-      }finally {
-        setLoading(false);
-      }
-    }
-
+      } catch (err: unknown) {
+        let errorMessage = "Failed to fetch visits.";
+        if(axios.isAxiosError(err)){
+          errorMessage = err.response?.data?.detail || err.message || errorMessage;
+        } else if ( err instanceof Error) {
+          errorMessage = err.message;
+        }
+      setError(`${errorMessage} Please try again later.`);
+          }finally {
+            setLoading(false);
+          }
+        }
     fetchVisits();
-  }, []);
+  }, [API_BASE_URL]);
 
   const handleCheckIn = async (visitId: string): Promise<void> => {
     try {
@@ -52,8 +56,9 @@ const VisitsDashboard: React.FC = () => {
       setVisits(prevVisits => 
         prevVisits.map(v => v.id === visitId ? response.data : v)
       );
-    } catch (err: any) {
-      alert("Error during check-in: " + (err.response?.data?.detail || "Unknown error"));
+    } catch (err: unknown) {
+      const apiMessage = axios.isAxiosError(err) ? err.response?.data?.detail || "Unknown error" : "An unexpected error occured.";
+      alert("Error during check-in: " + (apiMessage));
     }
   };
 
@@ -63,8 +68,11 @@ const VisitsDashboard: React.FC = () => {
     setVisits(prevVisits => 
       prevVisits.map(v => v.id === visitId ? response.data : v)
     );
-  } catch (err: any) {
-    alert("Error during check-out: " + (err.response?.data?.detail || "Unknown error"));
+  } catch (err: unknown) {
+    const apiMessage = axios.isAxiosError(err) 
+        ? err.response?.data?.detail || "Unknown error" 
+        : "An unexpected error occurred";
+      alert("Error during check-out: " + apiMessage);
   }   
 };
 
