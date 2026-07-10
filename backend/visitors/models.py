@@ -29,15 +29,18 @@ class Visit(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     # Visitor Information
-    visitor_full_name = models.CharField(max_length=150)
-    visitor_email = models.EmailField()
-    visitor_company = models.CharField(max_length=150, blank=True)
+    visitor = models.ForeignKey(
+       Visitor,
+       on_delete=models.CASCADE,
+       related_name='visitor_visits',
+       default=None
+    )
     
     # Host (The employee being visited)
     host = models.ForeignKey(
         settings.AUTH_USER_MODEL, 
         on_delete=models.CASCADE, 
-        related_name='visits'
+        related_name='host_visits'
     )
 
     # Timing
