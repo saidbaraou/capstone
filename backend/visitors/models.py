@@ -18,8 +18,6 @@ class Visitor(models.Model):
   def full_name(self):
     return f"{self.first_name} {self.last_name}"
   
-  
-
 class Visit(models.Model):
     class VisitStatus(models.TextChoices):
         PENDING = 'PENDING', 'Pending'
