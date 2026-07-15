@@ -41,8 +41,8 @@ const VisitsDashboard: React.FC = () => {
       try {
         const response = await axios.get<Visit[]>(API_BASE_URL);
         setVisits(response.data); 
-       // 💡 1. AJOUTE CE LOG POUR VOIR LA STRUCTURE DANS LA CONSOLE
-        console.log("Données reçues de l'API :", response.data);
+       
+        console.log("API received data :", response.data);
       } catch (err: unknown) {
         let errorMessage = "Failed to fetch visits.";
         if(axios.isAxiosError(err)){
@@ -130,9 +130,9 @@ const handleCreateVisit = async (e: React.FormEvent): Promise<void> => {
         </button>
       </div>
 
-      {/* Formulaire Conditionnel Rétractable */}
+      {/* conditional form */}
       {showForm && (
-        <form onSubmit={handleCreateVisit} style={{ marginBottom: '30px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#f9f9f9', maxWidth: '500px' }}>
+        <form onSubmit={handleCreateVisit} style={{ margin: '0 auto 30px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#f9f9f9', maxWidth: '500px' }}>
           <h3>New Visitor Registration</h3>
           <div style={{ marginBottom: '10px' }}>
             <label style={{ display: 'block', marginBottom: '5px' }}>First Name:</label>
@@ -160,7 +160,7 @@ const handleCreateVisit = async (e: React.FormEvent): Promise<void> => {
         </form>
       )}
 
-      {/* Tableau des visites */}
+      {/* Visits table */}
       <table border={1} cellPadding={10} style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ backgroundColor: '#f4f4f4' }}>
