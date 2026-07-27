@@ -126,7 +126,7 @@ const handleCreateVisit = async (e: React.FormEvent): Promise<void> => {
           onClick={() => setShowForm(!showForm)} 
           style={{ padding: '10px 15px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
         >
-          {showForm ? '✖ Close Form' : '➕ Add New Visitor'}
+          {showForm ? '✖ Close Form' : 'Add New Visitor'}
         </button>
       </div>
 
