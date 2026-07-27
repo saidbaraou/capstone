@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './VisitsDashboard.css'; 
 
 export interface Visit {
   id: string; // UUID backend UUID
@@ -132,33 +133,75 @@ const handleCreateVisit = async (e: React.FormEvent): Promise<void> => {
 
       {/* conditional form */}
       {showForm && (
-        <form onSubmit={handleCreateVisit} style={{ margin: '0 auto 30px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#f9f9f9', maxWidth: '500px' }}>
-          <h3>New Visitor Registration</h3>
-          <div style={{ marginBottom: '10px' }}>
-            <label style={{ display: 'inline_block', marginBottom: '5px' }}>First Name:</label>
-            <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} required style={{ width: '100%', padding: '8px', boxSizing: 'border-box', outline: 'none'}} />
-          </div>
-          <div style={{ marginBottom: '10px' }}>
-            <label style={{ display: 'block', marginBottom: '5px' }}>Last Name:</label>
-            <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} required style={{ width: '100%', padding: '8px', boxSizing: 'border-box', outline: 'none'}} />
-          </div>
-          <div style={{ marginBottom: '10px' }}>
-            <label style={{ display: 'block', marginBottom: '5px' }}>Email:</label>
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)} required style={{ width: '100%', padding: '8px', boxSizing: 'border-box', outline: 'none' }} />
-          </div>
-          <div style={{ marginBottom: '10px' }}>
-            <label style={{ display: 'block', marginBottom: '5px' }}>Company (Optional):</label>
-            <input type="text" value={company} onChange={e => setCompany(e.target.value)} style={{ width: '100%', padding: '8px', boxSizing: 'border-box', outline: 'none' }} />
-          </div>
-          <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '5px' }}>Purpose of Visit:</label>
-            <input type="text" value={purpose} onChange={e => setPurpose(e.target.value)} required style={{ width: '100%', padding: '8px', boxSizing: 'border-box', outline: 'none' }} />
-          </div>
-          <button type="submit" style={{ padding: '10px 15px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-            Register & Save
-          </button>
-        </form>
-      )}
+  <form onSubmit={handleCreateVisit} className="modern-form">
+    <h3 className="modern-form-title">New Visitor Registration</h3>
+
+    <div className="form-group">
+      <label htmlFor="firstName">First Name</label>
+      <input
+        id="firstName"
+        type="text"
+        className="modern-input"
+        value={firstName}
+        onChange={e => setFirstName(e.target.value)}
+        required
+      />
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="lastName">Last Name</label>
+      <input
+        id="lastName"
+        type="text"
+        className="modern-input"
+        value={lastName}
+        onChange={e => setLastName(e.target.value)}
+        required
+      />
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="email">Email Address</label>
+      <input
+        id="email"
+        type="email"
+        className="modern-input"
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        required
+      />
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="company">Company (Optional)</label>
+      <input
+        id="company"
+        type="text"
+        className="modern-input"
+        value={company}
+        onChange={e => setCompany(e.target.value)}
+      />
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="purpose">Purpose of Visit</label>
+      <input
+        id="purpose"
+        type="text"
+        className="modern-input"
+        value={purpose}
+        onChange={e => setPurpose(e.target.value)}
+        required
+      />
+    </div>
+
+    <div className="form-actions">
+      <button type="submit" className="submit-btn">
+        Register & Save
+      </button>
+    </div>
+  </form>
+)}
 
       {/* Visits table */}
       <table border={1} cellPadding={10} style={{ width: '100%', borderCollapse: 'collapse' }}>
