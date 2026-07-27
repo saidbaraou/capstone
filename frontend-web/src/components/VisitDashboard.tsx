@@ -135,24 +135,24 @@ const handleCreateVisit = async (e: React.FormEvent): Promise<void> => {
         <form onSubmit={handleCreateVisit} style={{ margin: '0 auto 30px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#f9f9f9', maxWidth: '500px' }}>
           <h3>New Visitor Registration</h3>
           <div style={{ marginBottom: '10px' }}>
-            <label style={{ display: 'block', marginBottom: '5px' }}>First Name:</label>
-            <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} required style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }} />
+            <label style={{ display: 'inline_block', marginBottom: '5px' }}>First Name:</label>
+            <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} required style={{ width: '100%', padding: '8px', boxSizing: 'border-box', outline: 'none'}} />
           </div>
           <div style={{ marginBottom: '10px' }}>
             <label style={{ display: 'block', marginBottom: '5px' }}>Last Name:</label>
-            <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} required style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }} />
+            <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} required style={{ width: '100%', padding: '8px', boxSizing: 'border-box', outline: 'none'}} />
           </div>
           <div style={{ marginBottom: '10px' }}>
             <label style={{ display: 'block', marginBottom: '5px' }}>Email:</label>
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)} required style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }} />
+            <input type="email" value={email} onChange={e => setEmail(e.target.value)} required style={{ width: '100%', padding: '8px', boxSizing: 'border-box', outline: 'none' }} />
           </div>
           <div style={{ marginBottom: '10px' }}>
             <label style={{ display: 'block', marginBottom: '5px' }}>Company (Optional):</label>
-            <input type="text" value={company} onChange={e => setCompany(e.target.value)} style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }} />
+            <input type="text" value={company} onChange={e => setCompany(e.target.value)} style={{ width: '100%', padding: '8px', boxSizing: 'border-box', outline: 'none' }} />
           </div>
           <div style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', marginBottom: '5px' }}>Purpose of Visit:</label>
-            <input type="text" value={purpose} onChange={e => setPurpose(e.target.value)} required style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }} />
+            <input type="text" value={purpose} onChange={e => setPurpose(e.target.value)} required style={{ width: '100%', padding: '8px', boxSizing: 'border-box', outline: 'none' }} />
           </div>
           <button type="submit" style={{ padding: '10px 15px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
             Register & Save
