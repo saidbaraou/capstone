@@ -132,70 +132,94 @@ const handleCreateVisit = async (e: React.FormEvent): Promise<void> => {
 
       {/* conditional form */}
       {showForm && (
-  <form onSubmit={handleCreateVisit} className="modern-form">
-    <h3 className="modern-form-title">New Visitor Registration</h3>
+  <form 
+    onSubmit={handleCreateVisit} 
+    className="w-[80%] mx-auto mb-9 p-[30px] bg-white rounded-2xl shadow-sm border border-gray-200 box-border"
+  >
+    <h3 className="text-center mt-0 mb-6 text-slate-800 text-xl font-semibold">
+      New Visitor Registration
+    </h3>
 
-    <div className="form-group">
-      <label htmlFor="firstName">First Name</label>
+    {/* First Name */}
+    <div className="flex flex-col items-start mb-4 w-full">
+      <label htmlFor="firstName" className="text-sm font-semibold text-slate-600 mb-1.5 text-left">
+        First Name
+      </label>
       <input
         id="firstName"
         type="text"
-        className="modern-input"
+        className="w-full px-4 py-2.5 text-base border-1.5 border-slate-200 rounded-xl bg-slate-50 text-slate-900 outline-none transition-all duration-200 hover:border-slate-300 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 box-border"
         value={firstName}
         onChange={e => setFirstName(e.target.value)}
         required
       />
     </div>
 
-    <div className="form-group">
-      <label htmlFor="lastName">Last Name</label>
+    {/* Last Name */}
+    <div className="flex flex-col items-start mb-4 w-full">
+      <label htmlFor="lastName" className="text-sm font-semibold text-slate-600 mb-1.5 text-left">
+        Last Name
+      </label>
       <input
         id="lastName"
         type="text"
-        className="modern-input"
+        className="w-full px-4 py-2.5 text-base border-1.5 border-slate-200 rounded-xl bg-slate-50 text-slate-900 outline-none transition-all duration-200 hover:border-slate-300 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 box-border"
         value={lastName}
         onChange={e => setLastName(e.target.value)}
         required
       />
     </div>
 
-    <div className="form-group">
-      <label htmlFor="email">Email Address</label>
+    {/* Email Address */}
+    <div className="flex flex-col items-start mb-4 w-full">
+      <label htmlFor="email" className="text-sm font-semibold text-slate-600 mb-1.5 text-left">
+        Email Address
+      </label>
       <input
         id="email"
         type="email"
-        className="modern-input"
+        className="w-full px-4 py-2.5 text-base border-1.5 border-slate-200 rounded-xl bg-slate-50 text-slate-900 outline-none transition-all duration-200 hover:border-slate-300 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 box-border"
         value={email}
         onChange={e => setEmail(e.target.value)}
         required
       />
     </div>
 
-    <div className="form-group">
-      <label htmlFor="company">Company (Optional)</label>
+    {/* Company */}
+    <div className="flex flex-col items-start mb-4 w-full">
+      <label htmlFor="company" className="text-sm font-semibold text-slate-600 mb-1.5 text-left">
+        Company (Optional)
+      </label>
       <input
         id="company"
         type="text"
-        className="modern-input"
+        className="w-full px-4 py-2.5 text-base border-1.5 border-slate-200 rounded-xl bg-slate-50 text-slate-900 outline-none transition-all duration-200 hover:border-slate-300 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 box-border"
         value={company}
         onChange={e => setCompany(e.target.value)}
       />
     </div>
 
-    <div className="form-group">
-      <label htmlFor="purpose">Purpose of Visit</label>
+    {/* Purpose of Visit */}
+    <div className="flex flex-col items-start mb-4 w-full">
+      <label htmlFor="purpose" className="text-sm font-semibold text-slate-600 mb-1.5 text-left">
+        Purpose of Visit
+      </label>
       <input
         id="purpose"
         type="text"
-        className="modern-input"
+        className="w-full px-4 py-2.5 text-base border-1.5 border-slate-200 rounded-xl bg-slate-50 text-slate-900 outline-none transition-all duration-200 hover:border-slate-300 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 box-border"
         value={purpose}
         onChange={e => setPurpose(e.target.value)}
         required
       />
     </div>
 
-    <div className="form-actions">
-      <button type="submit" className="submit-btn">
+    {/* Submit Button */}
+    <div className="flex justify-center mt-6 w-full">
+      <button 
+        type="submit" 
+        className="w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-semibold rounded-xl text-base cursor-pointer transition-all duration-150 border-none"
+      >
         Register & Save
       </button>
     </div>
