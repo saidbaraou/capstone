@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './VisitsDashboard.css'; 
 
 export interface Visit {
   id: string; // UUID backend UUID
