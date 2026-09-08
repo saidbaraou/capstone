@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from visitors.models import Visit
+from visitors.models import Visitor, Visit
 
 User = get_user_model()
 
@@ -14,7 +14,7 @@ class VisitAPITests(APITestCase):
         Create initial data before each test.
         """
         # 1. Create a dummy host (employee)
-        self.host_user = User.objects.create_user(
+        self.host = User.objects.create_user(
             username="johndoe",
             email="john.doe@company.com",
             password="securepassword123",
@@ -27,7 +27,7 @@ class VisitAPITests(APITestCase):
             visitor_full_name="Alice Smith",
             visitor_email="alice.smith@client.com",
             visitor_company="Acme Corp",
-            host=self.host_user,
+            host=self.host,
             planned_arrival=timezone.now() + timezone.timedelta(days=1),
             purpose_of_visit="Project Review"
         )
