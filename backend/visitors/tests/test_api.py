@@ -21,8 +21,16 @@ class VisitAPITests(APITestCase):
             first_name="John",
             last_name="Doe"
         )
+
+        #2. Create a dummy visitor
+        self.visitor = Visitor.objects.create(
+            first_name="Alice",
+            last_name="Smith",
+            email="alice@example.com",
+            company="Acme Corp"
+        )
         
-        # 2. Create a dummy pending visit
+        # 3. Create a dummy pending visit
         self.visit = Visit.objects.create(
             visitor_full_name="Alice Smith",
             visitor_email="alice.smith@client.com",
@@ -32,7 +40,7 @@ class VisitAPITests(APITestCase):
             purpose_of_visit="Project Review"
         )
         
-        # 3. Generate URLs for the endpoints
+        # 4. Generate URLs for the endpoints
         self.list_url = reverse('visit-list')
         self.check_in_url = reverse('visit-check-in', kwargs={'pk': self.visit.id})
         self.check_out_url = reverse('visit-check-out', kwargs={'pk': self.visit.id})
