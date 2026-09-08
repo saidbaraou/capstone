@@ -61,7 +61,7 @@ class Visit(models.Model):
     nda_accepted = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.visitor_full_name} ({self.status})"
+        return f"{self.visitor.full_name} ({self.status})"
 
     class Meta:
         ordering = ['-planned_arrival']
