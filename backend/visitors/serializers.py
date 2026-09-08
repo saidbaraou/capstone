@@ -7,6 +7,9 @@ class VisitorSerializer(serializers.ModelSerializer):
         fields = '__all__' # This will include all fields of the Visitor model in the serialized output
 
 class VisitSerializer(serializers.ModelSerializer):
+    # display visitor's full name instead of just the ID
+    visitor_full_name = serializers.ReadOnlyField(source='visitor.full_name')
+    visitor_company = serializers.ReadOnlyField(source='visitor.company')
     # display host's full name instead of just the ID
     host_name = serializers.ReadOnlyField(source='host.get_full_name')
     # Optionally include visitor's email in the serialized output

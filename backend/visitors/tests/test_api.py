@@ -32,9 +32,7 @@ class VisitAPITests(APITestCase):
         
         # 3. Create a dummy pending visit
         self.visit = Visit.objects.create(
-            visitor_full_name="Alice Smith",
-            visitor_email="alice.smith@client.com",
-            visitor_company="Acme Corp",
+            visitor=self.visitor,
             host=self.host,
             planned_arrival=timezone.now() + timezone.timedelta(days=1),
             purpose_of_visit="Project Review"
